@@ -1,0 +1,12 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+  <mat-form-field>
+    <input matInput placeholder="Marka Adı" formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Açıklama" formControlName="description">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary">Kaydet</button>
+
+</form>

@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>{{data.error.name}}</h1>
+<div mat-dialog-content>
+  <p>{{data.error.message}}</p>
+  <p><strong>Status Text: </strong>{{data.error.statusText}}</p>
+  <p><strong>Status: </strong>{{data.error.status}}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="dialogRef.close()">
+    SAYFAYI YENİLE
+  </button>
+</div>

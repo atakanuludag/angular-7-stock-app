@@ -1,0 +1,45 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+  [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+  [mode]="(isHandset$ | async) ? 'over' : 'side'"
+  [opened]="!(isHandset$ | async)">
+      <mat-toolbar color="primary">Menüler</mat-toolbar>
+      <mat-nav-list>
+        <a *ngFor="let item of navigationMenu" mat-list-item routerLink="{{item.routerLink}}"><mat-icon *ngIf=item.icon>{{item.icon}}</mat-icon>{{item.title}}</a>
+      </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+
+  <mat-toolbar color="primary">
+    <button type="button" aria-label="Menü" mat-icon-button
+    (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+      <mat-icon aria-label="Menü">list</mat-icon>
+    </button>
+    <span>{{pageTitle}}</span>
+
+    <div>
+
+      <button mat-icon-button [matMenuTriggerFor]="userMenu">
+        <mat-icon>person</mat-icon>
+      </button>
+
+      <mat-menu #userMenu="matMenu">
+          <button mat-menu-item>Yardım</button>
+          <button mat-menu-item (click)="logout()">Çıkış Yap</button>
+        </mat-menu>
+
+    </div>
+
+    
+
+
+  </mat-toolbar>
+  <mat-progress-bar *ngIf="loading" color="primary" mode="indeterminate"></mat-progress-bar>
+    
+    <div [ngClass]="['container', loading ? 'loading-blur' : 'no-blur']">
+      <router-outlet></router-outlet>
+    </div>
+    
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

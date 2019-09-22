@@ -1,0 +1,36 @@
+<div class="mb-20">
+  <button mat-raised-button color="primary" (click)="newItem()">Yeni Ekle</button>
+</div>
+
+<table mat-table [dataSource]="dataSource">
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Marka Adı </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Description Column -->
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef> Açıklama </th>
+    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+  </ng-container>
+
+  <!-- Update and Delete Column -->
+  <ng-container matColumnDef="operations">
+    <th mat-header-cell *matHeaderCellDef> İşlemler </th>
+    <td mat-cell *matCellDef="let element; let i = index">
+
+      <button mat-icon-button (click)="edit(element.id)" matTooltip="Düzenle" aria-label="Düzenle">
+        <mat-icon aria-label="Düzenle">edit</mat-icon>
+      </button>
+
+      <button mat-icon-button (click)="delete(element.id, i)" matTooltip="Sil" aria-label="Sil">
+        <mat-icon aria-label="Sil">delete_forever</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

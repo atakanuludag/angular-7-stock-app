@@ -1,0 +1,38 @@
+<div class="dashboard">
+
+  <div fxLayout="column" fxLayoutWrap fxLayoutAlign="space-around stretch">
+
+
+    <mat-card fxFlex="100">
+      <mat-card-title>Toplam Parça</mat-card-title>
+      <mat-card-content>
+        <h2>{{dataObject.totalQuantity}}</h2>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card fxFlex="100">
+      <mat-card-title>Toplam Stok</mat-card-title>
+      <mat-card-content>
+        <h2>{{dataObject.totalStock}}</h2>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card fxFlex="100">
+      <mat-card-title>Parçaların Toplam Alış Fiyatı</mat-card-title>
+      <mat-card-content>
+        <h2>{{dataObject.totalPurchasePrice | number:'2.2-2'}} ₺</h2>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card fxFlex="100">
+      <mat-card-title>Parçaların Toplam Satış Fiyatı</mat-card-title>
+      <mat-card-content>
+        <h2>{{dataObject.totalSalePrice | number:'2.2-2'}} ₺</h2>
+      </mat-card-content>
+    </mat-card>
+
+  
+
+  </div>
+
+</div>

@@ -1,0 +1,37 @@
+@import 'font-awesome/css/font-awesome.min.css';
+$responsive: 768px;
+
+body, html {
+    background-color: #f1f1f1;
+}
+.login {
+   .mat-card {
+    text-align: center;
+    width: 25%;
+    position: absolute;
+    top: 25%;
+    left: 35%;
+
+    @media screen and (max-width:$responsive){
+        width: 80%;
+        top: 25%;
+        left: 5.5%;
+        top: 30%;
+    }
+
+    .mat-progress-bar {
+        margin-top:5px;
+    }
+
+    .mat-form-field {
+        width:100%;
+    }
+    .mat-raised-button {
+        width:100%;
+    }
+   }
+
+   
+   
+    
+}

@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+.sidenav-container {
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  .mat-icon {
+    font-size:28px !important;
+  }
+  .mat-nav-list {
+    .mat-icon {
+      font-size: 20px !important;
+      color: #505050;
+      width: 30px;
+      line-height: 24px;
+    }
+  }
+}
+.sidenav {
+  width: 200px;
+  .mat-toolbar { 
+    background: #3f51b5;
+  }
+}
+.mat-toolbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.container {
+  padding: 15px 15px;
+}
+.loading-blur {
+  pointer-events: none;
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  -ms-filter: blur(3px);
+  filter: blur(3px);
+}

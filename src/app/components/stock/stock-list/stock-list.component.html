@@ -1,0 +1,102 @@
+<div class="stock-list">
+
+  <div fxLayout="row" fxLayoutWrap fxLayoutAlign="space-between center" fxLayout.lt-sm="column">
+
+    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="space-between center">
+
+      <mat-form-field style="margin-right:10px">
+        <mat-select placeholder="Arama Varyasyonu" [(ngModel)]="sType">
+          <mat-option value="stockCode">Stok Kodu</mat-option>
+          <mat-option value="compatibleModels">Uyumlu Model</mat-option>
+          <mat-option value="description">Açıklama</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Listede Ara...</mat-label>
+        <input matInput (keyup.enter)="searchFilter()" [(ngModel)]="search">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+
+    </div>
+
+    <div class="new-button">
+      <button mat-raised-button color="primary" (click)="newItem()">Yeni Ekle</button>
+    </div>
+
+  </div>
+
+
+  <div class="datatable">
+
+    <mat-paginator (page)="pageChanged($event)" [pageSize]="pageSize" [pageIndex]="pageIndex" [length]="totalPages"
+      [showFirstLastButtons]="true" [pageSizeOptions]="[10, 20, 30]">
+    </mat-paginator>
+
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sorting($event)">
+
+      <!-- Stock Code Column -->
+      <ng-container matColumnDef="stockCode">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Stok Kodu </th>
+        <td mat-cell *matCellDef="let element" (click)="getInfo(element)" class="stock-code">
+          {{element.stockCode}}</td>
+      </ng-container>
+
+      <!-- Quantity Column -->
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef> Adet </th>
+        <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+      </ng-container>
+
+      <!-- Purchase Price Column -->
+      <ng-container matColumnDef="purchasePrice">
+        <th mat-header-cell *matHeaderCellDef> Alış Fiyatı </th>
+        <td mat-cell *matCellDef="let element"> {{element.purchasePrice | currency:"TRY":"" }} ₺</td>
+      </ng-container>
+
+      <!-- Sale Price Column -->
+      <ng-container matColumnDef="salePrice">
+        <th mat-header-cell *matHeaderCellDef> Satış Fiyatı </th>
+        <td mat-cell *matCellDef="let element"> {{element.salePrice | currency:"TRY":"" }} ₺</td>
+      </ng-container>
+
+      <!-- Shelf Code Column -->
+      <ng-container matColumnDef="shelfCode">
+        <th mat-header-cell *matHeaderCellDef> Raf Kodu </th>
+        <td mat-cell *matCellDef="let element"> {{element.shelfCode}} </td>
+      </ng-container>
+
+      <!-- Description Column -->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Açıklama </th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+      </ng-container>
+
+      <!-- Compatible Models Column -->
+      <ng-container matColumnDef="compatibleModels">
+        <th mat-header-cell *matHeaderCellDef> Uyumlu Modeller </th>
+        <td mat-cell *matCellDef="let element"> {{element.compatibleModels}} </td>
+      </ng-container>
+
+      <!-- Update and Delete Column -->
+      <ng-container matColumnDef="operations">
+        <th mat-header-cell *matHeaderCellDef> İşlemler </th>
+        <td mat-cell *matCellDef="let element; let i = index">
+
+          <button mat-icon-button (click)="edit(element.id)" matTooltip="Düzenle" aria-label="Düzenle">
+            <mat-icon aria-label="Düzenle">edit</mat-icon>
+          </button>
+
+          <button mat-icon-button (click)="delete(element.id, i)" matTooltip="Sil" aria-label="Sil">
+            <mat-icon aria-label="Sil">delete_forever</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+    </table>
+  </div>
+</div>

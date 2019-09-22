@@ -1,0 +1,40 @@
+<form [formGroup]="form" (ngSubmit)="save()">
+    <mat-form-field>
+      <input matInput placeholder="Parça Kodu" formControlName="stockCode">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input matInput type="number" placeholder="Adet" formControlName="quantity">
+    </mat-form-field>
+
+    <mat-form-field>
+        <textarea matInput rows="4" placeholder="Açıklama" formControlName="description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select placeholder="Marka" formControlName="brand">
+          <mat-option *ngFor="let item of brandDataObject" [value]="item.id">
+            {{item.name}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Alış Fiyatı" formControlName="purchasePrice" currencyMask>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Satış Fiyatı" formControlName="salePrice" currencyMask>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Raf Kodu" formControlName="shelfCode">
+    </mat-form-field>
+
+    <mat-form-field>
+        <textarea matInput rows="4" placeholder="Uyumlu Modeller" formControlName="compatibleModels"></textarea>
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" [disabled]="!form.valid">Kaydet</button>
+  
+  </form>

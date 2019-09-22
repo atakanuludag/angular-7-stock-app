@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Stok Bilgileri</h1>
+<div mat-dialog-content>
+  <p><strong>Parça Kodu: </strong> {{data.stockCode}}</p>
+  <p><strong>Raf Kodu: </strong> {{data.shelfCode}}</p>
+  <p><strong>Adet: </strong> {{data.quantity}}</p>
+  <p><strong>Açıklama: </strong> {{data.description}}</p>
+  <p><strong>Alış Fiyatı: </strong> {{data.purchasePrice | currency:"TRY":""}} ₺</p>
+  <p><strong>Satış Fiyatı: </strong> {{data.salePrice | currency:"TRY":""}} ₺</p>
+  <p><strong>Marka: </strong> {{data.brand.name}}</p>
+  <p><strong>Uyumlu Modeller: </strong> {{data.compatibleModels}}</p>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="dialogRef.close()">
+    Kapat
+  </button>
+</div>

@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Bilgilendirme</h1>
+<div mat-dialog-content>
+  <p>Gerçekten silmek istiyor musunuz ?</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="confirmSelection()">
+    Evet
+  </button>
+  <button mat-button (click)="dialogRef.close()">
+    Hayır
+  </button>
+</div>
